@@ -1,0 +1,243 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Resume | ${SITE_TITLE}`} description="Full-stack engineer. Experience, skills, and background." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Resume</h1>
+
+			<section>
+				<h2>Skills</h2>
+				<div class="skills">
+					<div class="skill-group">
+						<h3>Languages</h3>
+						<p>TypeScript, JavaScript, PHP, SQL, HTML, CSS</p>
+					</div>
+					<div class="skill-group">
+						<h3>Frontend</h3>
+						<p>React, Electron, Next.js, Expo, Astro, Material-UI, shadcn/ui, Tailwind CSS</p>
+					</div>
+					<div class="skill-group">
+						<h3>Backend</h3>
+						<p>Laravel, Node.js, Hono, Payload CMS, MySQL, Postgres</p>
+					</div>
+					<div class="skill-group">
+						<h3>State & Data</h3>
+						<p>TanStack Query, Zustand, Drizzle ORM, REST APIs, SOAP</p>
+					</div>
+					<div class="skill-group">
+						<h3>Infrastructure</h3>
+						<p>Docker, Caddy, Vite, Linux, Cloudflare, SendGrid</p>
+					</div>
+					<div class="skill-group">
+						<h3>Tooling</h3>
+						<p>Git, Jira, Electron Builder, cross-platform builds (Windows/macOS)</p>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2>Experience</h2>
+
+				<div class="job">
+					<div class="job-header">
+						<div>
+							<h3>Software Engineer</h3>
+							<p class="company">Priority DMS <span class="acquired">(formerly Dealer Merchant Services, acquired Oct 2025)</span></p>
+						</div>
+						<span class="date">Oct 2024 &mdash; Present</span>
+					</div>
+					<p class="job-summary">
+						One of two engineers building a payment processing platform for automotive dealerships.
+						Company ranked #120 on the Inc 5000 list, with the platform helping dealers save over $68 million.
+						Led system design and architecture planning across 6 interconnected core services. Picked up PHP and Laravel on the job &mdash; had never written a line of PHP before starting.
+					</p>
+
+					<h4>Electron Desktop POS App</h4>
+					<p class="stack">Electron, React, TypeScript, Vite, Material-UI, TanStack Query, Zustand</p>
+					<ul>
+						<li>Led migration from Create React App to Vite + TypeScript, modernizing the build toolchain for a production POS application</li>
+						<li>Consolidated 6 siloed integration components (~4,460 lines of duplicated code) into a single unified transaction flow supporting CDK, Dealertrack, and Dominion DMS systems</li>
+						<li>Built multi-payment processing (card, cash, check), Z-Reports with PDF generation, and a one-click debug report feature for support</li>
+						<li>Resolved macOS ARM64 code signing for cross-platform distribution (Windows MSI/NSIS + macOS DMG)</li>
+					</ul>
+
+					<h4>Laravel Payment API <span class="new-badge">Built from scratch</span></h4>
+					<p class="stack">Laravel 12, PHP 8.2, MySQL, Valor PayTech API, SendGrid</p>
+					<ul>
+						<li>Designed and built a new Laravel backend from the ground up to replace legacy vanilla PHP endpoints, with multi-database architecture, repository pattern, and standardized API responses</li>
+						<li>Implemented full transaction processing pipeline with Valor PayTech API integration, server-side receipt generation, and DMS payment settling across three providers</li>
+					</ul>
+
+					<h4>Legacy PHP API Modernization</h4>
+					<p class="stack">Vanilla PHP, MySQL, Session Auth</p>
+					<ul>
+						<li>Inherited and refactored a legacy vanilla PHP API &mdash; introduced security middleware, session-based auth, rate limiting, and endpoint versioning</li>
+						<li>Documented the full Laravel migration path, creating the blueprint used to build the new backend</li>
+					</ul>
+
+					<h4>Internal Admin Portal</h4>
+					<p class="stack">React, TypeScript, shadcn/ui, Tailwind, Laravel, Google OAuth</p>
+					<ul>
+						<li>Built and maintained the admin portal (500+ commits) for managing stores, terminals, users, and transactions across the fleet</li>
+						<li>Designed merchant onboarding wizard, launch management system with Google Calendar integration, and bulk CSV import for terminals/users</li>
+						<li>Optimized API response times from 8s to 450ms (17x improvement) on critical endpoints</li>
+					</ul>
+
+					<h4>DMS Integration Microservice</h4>
+					<p class="stack">Laravel, Fortellis API, OpenTrack SOAP, Dominion SecureVUE</p>
+					<ul>
+						<li>Built microservice handling real-time communication with CDK, Dealertrack, and Dominion &mdash; the three major automotive DMS providers</li>
+						<li>Implemented structured debug logging with correlation IDs for tracing requests across the distributed system</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h2>Education</h2>
+				<div class="education">
+					<div class="edu-header">
+						<h3>Flatiron School</h3>
+						<span class="date">2019 &mdash; 2020</span>
+					</div>
+					<p>Full-Stack Software Engineering &mdash; In-Person Immersive Program</p>
+				</div>
+			</section>
+
+			<section>
+				<h2>Contact</h2>
+				<ul class="contact-list">
+					<li><a href="https://github.com/bufordeeds">GitHub</a></li>
+					<li><a href="https://www.linkedin.com/in/bufordeeds/">LinkedIn</a></li>
+					<li><a href="mailto:hello@buford.dev">hello@buford.dev</a></li>
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	section {
+		margin-bottom: 2.5rem;
+	}
+	.skills {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1rem;
+	}
+	.skill-group {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1rem;
+	}
+	.skill-group h3 {
+		font-size: 1em;
+		margin-bottom: 0.3rem;
+	}
+	.skill-group p {
+		color: rgb(var(--gray));
+		font-size: 0.85em;
+		margin: 0;
+	}
+	.job {
+		margin-top: 1.5rem;
+	}
+	.job-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	.job-header h3 {
+		margin: 0;
+		font-size: 1.4em;
+	}
+	.company {
+		color: var(--accent);
+		font-weight: 700;
+		margin: 0;
+		font-size: 1.1em;
+	}
+	.date {
+		color: rgb(var(--gray));
+		font-size: 0.9em;
+		white-space: nowrap;
+		padding-top: 0.3rem;
+	}
+	.acquired {
+		font-weight: 400;
+		color: rgb(var(--gray));
+		font-size: 0.85em;
+	}
+	.job-summary {
+		color: rgb(var(--gray-dark));
+		font-size: 0.95em;
+		margin-top: 0.75rem;
+		border-left: 3px solid var(--accent);
+		padding-left: 1rem;
+	}
+	.job h4 {
+		font-size: 1.1em;
+		margin-top: 1.75rem;
+		margin-bottom: 0.2rem;
+	}
+	.new-badge {
+		background: #d4edda;
+		color: #155724;
+		padding: 0.15rem 0.5rem;
+		border-radius: 4px;
+		font-size: 0.7em;
+		font-weight: 700;
+		vertical-align: middle;
+	}
+	.stack {
+		color: rgb(var(--gray));
+		font-size: 0.8em;
+		margin-bottom: 0.5rem;
+	}
+	.job ul {
+		padding-left: 1.2rem;
+		margin: 0;
+	}
+	.job li {
+		font-size: 0.88em;
+		margin-bottom: 0.4rem;
+		line-height: 1.5;
+	}
+	.education {
+		margin-top: 1rem;
+	}
+	.edu-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+	}
+	.edu-header h3 {
+		margin: 0;
+		font-size: 1.2em;
+	}
+	.education p {
+		color: rgb(var(--gray));
+		font-size: 0.95em;
+		margin-top: 0.25rem;
+	}
+	.contact-list {
+		list-style: none;
+		padding: 0;
+	}
+	.contact-list li {
+		margin-bottom: 0.5rem;
+	}
+</style>

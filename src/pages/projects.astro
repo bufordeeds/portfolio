@@ -1,0 +1,124 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const projects = [
+	{
+		title: 'Skateland West',
+		description: 'Client website for a San Antonio skating rink. Full CMS with media management, event scheduling, and dynamic content.',
+		tech: ['Next.js', 'Payload CMS', 'Postgres', 'S3/MinIO', 'TypeScript'],
+		url: 'https://skateland.buford.dev',
+		status: 'Live',
+	},
+	{
+		title: 'SAMA Companion',
+		description: 'Practice companion app for music lessons. Local-first architecture with SQLite for offline-first reliability.',
+		tech: ['Expo', 'SQLite', 'TypeScript'],
+		url: 'https://sama.buford.dev',
+		status: 'Live',
+	},
+	{
+		title: 'buford.dev',
+		description: 'This portfolio site. Statically generated, deployed on a self-hosted VPS with Caddy and Docker.',
+		tech: ['Astro', 'MDX', 'Docker', 'Caddy'],
+		url: 'https://buford.dev',
+		status: 'Live',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Projects | ${SITE_TITLE}`} description="Things I've built." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Projects</h1>
+			<p>Things I've built for clients and myself. All self-hosted on a single VPS.</p>
+
+			<ul class="project-list">
+				{projects.map((project) => (
+					<li class="project-card">
+						<a href={project.url}>
+							<div class="project-header">
+								<h2>{project.title}</h2>
+								<span class="status">{project.status}</span>
+							</div>
+							<p>{project.description}</p>
+							<div class="tech-tags">
+								{project.tech.map((t) => (
+									<span class="tag">{t}</span>
+								))}
+							</div>
+						</a>
+					</li>
+				))}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.project-list {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+	.project-card {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		transition: box-shadow 0.2s ease;
+	}
+	.project-card:hover {
+		box-shadow: var(--box-shadow);
+	}
+	.project-card a {
+		display: block;
+		padding: 1.5rem;
+		text-decoration: none;
+		color: inherit;
+	}
+	.project-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.5rem;
+	}
+	.project-header h2 {
+		margin: 0;
+		font-size: 1.3em;
+	}
+	.status {
+		background: #d4edda;
+		color: #155724;
+		padding: 0.2rem 0.6rem;
+		border-radius: 4px;
+		font-size: 0.75em;
+		font-weight: 700;
+	}
+	.project-card p {
+		color: rgb(var(--gray));
+		font-size: 0.9em;
+		margin-bottom: 1rem;
+	}
+	.tech-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.tag {
+		background: rgb(var(--gray-light));
+		color: rgb(var(--gray-dark));
+		padding: 0.2rem 0.6rem;
+		border-radius: 4px;
+		font-size: 0.75em;
+	}
+</style>
