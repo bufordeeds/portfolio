@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header>
@@ -13,6 +14,7 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/resume">Resume</HeaderLink>
 		</div>
 		<div class="social-links">
+			<ThemeToggle />
 			<a href="https://github.com/bufordeeds" target="_blank">
 				<span class="sr-only">GitHub</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
@@ -38,7 +40,7 @@ import HeaderLink from './HeaderLink.astro';
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: white;
+		background: var(--bg);
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 	}
 	h2 {
