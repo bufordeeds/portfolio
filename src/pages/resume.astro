@@ -15,6 +15,119 @@ import { SITE_TITLE } from '../consts';
 		<main>
 			<h1>Resume</h1>
 
+			<p class="summary">
+				Full-stack software engineer with 5+ years of experience building web and desktop applications.
+				From leading a design system at CDK Global to architecting payment processing infrastructure at Priority DMS,
+				I ship production software across the full stack: React, TypeScript, Laravel, Electron, and everything in between.
+			</p>
+
+			<section>
+				<h2>Experience</h2>
+
+				<div class="job">
+					<div class="job-header">
+						<div>
+							<h3>Software Engineer</h3>
+							<p class="company">Priority DMS <span class="acquired">(formerly Dealer Merchant Services, acquired Oct 2025)</span></p>
+						</div>
+						<span class="date">Sep 2024 - Present</span>
+					</div>
+					<p class="job-summary">
+						One of two engineers building a payment processing platform for automotive dealerships.
+						Company ranked #120 on the Inc 5000 list, with the platform helping dealers save over $68 million.
+						Led system design and architecture planning across 6 interconnected core services. Picked up PHP and Laravel on the job, having never written a line of PHP before starting.
+					</p>
+
+					<h4>Electron Desktop POS App</h4>
+					<p class="stack">Electron, React, TypeScript, Vite, Material-UI, TanStack Query, Zustand</p>
+					<ul>
+						<li>Led migration from Create React App to Vite + TypeScript, modernizing the build toolchain for a production POS application</li>
+						<li>Consolidated 6 siloed integration components (~4,460 lines of duplicated code) into a single unified transaction flow supporting CDK, Dealertrack, and Dominion DMS systems</li>
+						<li>Built multi-payment processing (card, cash, check), Z-Reports with PDF generation, and a one-click debug report feature for support</li>
+						<li>Resolved macOS ARM64 code signing for cross-platform distribution (Windows MSI/NSIS + macOS DMG)</li>
+					</ul>
+
+					<h4>Laravel Payment API <span class="new-badge">Built from scratch</span></h4>
+					<p class="stack">Laravel 12, PHP 8.2, MySQL, Valor PayTech API, SendGrid</p>
+					<ul>
+						<li>Designed and built a new Laravel backend from the ground up to replace legacy vanilla PHP endpoints, with multi-database architecture, repository pattern, and standardized API responses</li>
+						<li>Implemented full transaction processing pipeline with Valor PayTech API integration, server-side receipt generation, and DMS payment settling across three providers</li>
+					</ul>
+
+					<h4>Legacy PHP API Modernization</h4>
+					<p class="stack">Vanilla PHP, MySQL, Session Auth</p>
+					<ul>
+						<li>Inherited and refactored a legacy vanilla PHP API, introducing security middleware, session-based auth, rate limiting, and endpoint versioning</li>
+						<li>Documented the full Laravel migration path, creating the blueprint used to build the new backend</li>
+					</ul>
+
+					<h4>Internal Admin Portal</h4>
+					<p class="stack">React, TypeScript, shadcn/ui, Tailwind, Laravel, Google OAuth</p>
+					<ul>
+						<li>Built and maintained the admin portal (500+ commits) for managing stores, terminals, users, and transactions across the fleet</li>
+						<li>Designed merchant onboarding wizard, launch management system with Google Calendar integration, and bulk CSV import for terminals/users</li>
+						<li>Optimized API response times from 8s to 450ms (17x improvement) on critical endpoints</li>
+					</ul>
+
+					<h4>DMS Integration Microservice</h4>
+					<p class="stack">Laravel, Fortellis API, OpenTrack SOAP, Dominion SecureVUE</p>
+					<ul>
+						<li>Built microservice handling real-time communication with CDK, Dealertrack, and Dominion, the three major automotive DMS providers</li>
+						<li>Implemented structured debug logging with correlation IDs for tracing requests across the distributed system</li>
+					</ul>
+				</div>
+
+				<div class="job">
+					<div class="job-header">
+						<div>
+							<h3>Full Stack Engineer</h3>
+							<p class="company">Service Dog Standards <span class="acquired">(Freelance)</span></p>
+						</div>
+						<span class="date">Jun 2023 - Jun 2024</span>
+					</div>
+					<p class="stack">Vue.js, Express.js, MongoDB, SASS</p>
+					<ul>
+						<li>Partnered with a designer to address UI/UX issues and improve accessibility across the platform</li>
+						<li>Built an admin dashboard to streamline customer order management</li>
+						<li>Simplified login and sign-up workflows to reduce friction for new users</li>
+					</ul>
+				</div>
+
+				<div class="job">
+					<div class="job-header">
+						<div>
+							<h3>Software Engineer</h3>
+							<p class="company">CDK Global</p>
+						</div>
+						<span class="date">May 2020 - Apr 2023</span>
+					</div>
+					<p class="job-summary">
+						Three years across three roles (Intern &rarr; Associate &rarr; Engineer) on the Design System team,
+						building and maintaining the component library used across CDK's product suite.
+					</p>
+
+					<h4>Software Engineer <span class="date-inline">Feb 2022 - Apr 2023</span></h4>
+					<p class="stack">React, TypeScript, styled-components, Storybook, Node.js</p>
+					<ul>
+						<li>Led the design system team after the previous lead moved on, owning the component library used across multiple product teams</li>
+						<li>Mentored interns and helped onboard other product teams onto the design system for a uniform product suite</li>
+					</ul>
+
+					<h4>Associate Software Engineer <span class="date-inline">Sep 2020 - Feb 2022</span></h4>
+					<p class="stack">React, styled-components, Storybook, JavaScript</p>
+					<ul>
+						<li>Promoted from intern. Core contributor building reusable React components for the design system</li>
+						<li>Streamlined team processes and drove adoption of the design system across product teams</li>
+					</ul>
+
+					<h4>Software Engineer Intern <span class="date-inline">May 2020 - Sep 2020</span></h4>
+					<p class="stack">React, Styled Components, Webpack, Babel</p>
+					<ul>
+						<li>Built the "Park Ranger App," a front-end showcase application for CDK's design system, developed from the ground up</li>
+					</ul>
+				</div>
+			</section>
+
 			<section>
 				<h2>Skills</h2>
 				<div class="skills">
@@ -46,70 +159,13 @@ import { SITE_TITLE } from '../consts';
 			</section>
 
 			<section>
-				<h2>Experience</h2>
-
-				<div class="job">
-					<div class="job-header">
-						<div>
-							<h3>Software Engineer</h3>
-							<p class="company">Priority DMS <span class="acquired">(formerly Dealer Merchant Services, acquired Oct 2025)</span></p>
-						</div>
-						<span class="date">Oct 2024 &mdash; Present</span>
-					</div>
-					<p class="job-summary">
-						One of two engineers building a payment processing platform for automotive dealerships.
-						Company ranked #120 on the Inc 5000 list, with the platform helping dealers save over $68 million.
-						Led system design and architecture planning across 6 interconnected core services. Picked up PHP and Laravel on the job &mdash; had never written a line of PHP before starting.
-					</p>
-
-					<h4>Electron Desktop POS App</h4>
-					<p class="stack">Electron, React, TypeScript, Vite, Material-UI, TanStack Query, Zustand</p>
-					<ul>
-						<li>Led migration from Create React App to Vite + TypeScript, modernizing the build toolchain for a production POS application</li>
-						<li>Consolidated 6 siloed integration components (~4,460 lines of duplicated code) into a single unified transaction flow supporting CDK, Dealertrack, and Dominion DMS systems</li>
-						<li>Built multi-payment processing (card, cash, check), Z-Reports with PDF generation, and a one-click debug report feature for support</li>
-						<li>Resolved macOS ARM64 code signing for cross-platform distribution (Windows MSI/NSIS + macOS DMG)</li>
-					</ul>
-
-					<h4>Laravel Payment API <span class="new-badge">Built from scratch</span></h4>
-					<p class="stack">Laravel 12, PHP 8.2, MySQL, Valor PayTech API, SendGrid</p>
-					<ul>
-						<li>Designed and built a new Laravel backend from the ground up to replace legacy vanilla PHP endpoints, with multi-database architecture, repository pattern, and standardized API responses</li>
-						<li>Implemented full transaction processing pipeline with Valor PayTech API integration, server-side receipt generation, and DMS payment settling across three providers</li>
-					</ul>
-
-					<h4>Legacy PHP API Modernization</h4>
-					<p class="stack">Vanilla PHP, MySQL, Session Auth</p>
-					<ul>
-						<li>Inherited and refactored a legacy vanilla PHP API &mdash; introduced security middleware, session-based auth, rate limiting, and endpoint versioning</li>
-						<li>Documented the full Laravel migration path, creating the blueprint used to build the new backend</li>
-					</ul>
-
-					<h4>Internal Admin Portal</h4>
-					<p class="stack">React, TypeScript, shadcn/ui, Tailwind, Laravel, Google OAuth</p>
-					<ul>
-						<li>Built and maintained the admin portal (500+ commits) for managing stores, terminals, users, and transactions across the fleet</li>
-						<li>Designed merchant onboarding wizard, launch management system with Google Calendar integration, and bulk CSV import for terminals/users</li>
-						<li>Optimized API response times from 8s to 450ms (17x improvement) on critical endpoints</li>
-					</ul>
-
-					<h4>DMS Integration Microservice</h4>
-					<p class="stack">Laravel, Fortellis API, OpenTrack SOAP, Dominion SecureVUE</p>
-					<ul>
-						<li>Built microservice handling real-time communication with CDK, Dealertrack, and Dominion &mdash; the three major automotive DMS providers</li>
-						<li>Implemented structured debug logging with correlation IDs for tracing requests across the distributed system</li>
-					</ul>
-				</div>
-			</section>
-
-			<section>
 				<h2>Education</h2>
 				<div class="education">
 					<div class="edu-header">
 						<h3>Flatiron School</h3>
-						<span class="date">2019 &mdash; 2020</span>
+						<span class="date">2019 - 2020</span>
 					</div>
-					<p>Full-Stack Software Engineering &mdash; In-Person Immersive Program</p>
+					<p>Full-Stack Software Engineering, In-Person Immersive Program</p>
 				</div>
 			</section>
 
@@ -127,6 +183,14 @@ import { SITE_TITLE } from '../consts';
 </html>
 
 <style>
+	.summary {
+		font-size: 1.05em;
+		color: rgb(var(--gray-dark));
+		line-height: 1.6;
+		margin-bottom: 2rem;
+		border-left: 3px solid var(--accent);
+		padding-left: 1rem;
+	}
 	section {
 		margin-bottom: 2.5rem;
 	}
@@ -199,6 +263,12 @@ import { SITE_TITLE } from '../consts';
 		border-radius: 4px;
 		font-size: 0.7em;
 		font-weight: 700;
+		vertical-align: middle;
+	}
+	.date-inline {
+		font-weight: 400;
+		color: rgb(var(--gray));
+		font-size: 0.75em;
 		vertical-align: middle;
 	}
 	.stack {
