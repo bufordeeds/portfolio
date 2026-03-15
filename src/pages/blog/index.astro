@@ -17,8 +17,50 @@ const posts = (await getCollection('blog')).sort(
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			main {
-				width: 960px;
+			.featured {
+				margin-bottom: 2rem;
+			}
+			.featured a {
+				display: block;
+				text-decoration: none;
+				text-align: center;
+			}
+			.featured a * {
+				transition: 0.2s ease;
+			}
+			.featured .title {
+				font-size: 2.369rem;
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.featured .date {
+				margin: 0.5rem 0 0;
+				color: rgb(var(--gray));
+			}
+			.featured .description {
+				color: rgb(var(--gray-dark));
+				font-size: 1.1em;
+				margin: 0.75rem 0 0;
+				line-height: 1.5;
+			}
+			.featured .read-more {
+				display: inline-block;
+				margin-top: 0.75rem;
+				color: rgb(var(--accent));
+				font-weight: bold;
+			}
+			.featured img {
+				width: 100%;
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			.featured a:hover .title,
+			.featured a:hover .date {
+				color: rgb(var(--accent));
+			}
+			.featured a:hover img {
+				box-shadow: var(--box-shadow);
 			}
 			ul {
 				display: flex;
@@ -34,17 +76,6 @@ const posts = (await getCollection('blog')).sort(
 			ul li * {
 				text-decoration: none;
 				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
 			}
 			ul li img {
 				margin-bottom: 0.5rem;
@@ -70,6 +101,9 @@ const posts = (await getCollection('blog')).sort(
 				box-shadow: var(--box-shadow);
 			}
 			@media (max-width: 720px) {
+				.featured .title {
+					font-size: 1.563em;
+				}
 				ul {
 					gap: 0.5em;
 				}
@@ -77,22 +111,31 @@ const posts = (await getCollection('blog')).sort(
 					width: 100%;
 					text-align: center;
 				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
+			{posts.length > 0 && (
+				<section class="featured">
+					<a href={`/blog/${posts[0].id}/`}>
+						{posts[0].data.heroImage && (
+							<Image width={720} height={360} src={posts[0].data.heroImage} alt="" />
+						)}
+						<h4 class="title">{posts[0].data.title}</h4>
+						<p class="date">
+							<FormattedDate date={posts[0].data.pubDate} />
+						</p>
+						<p class="description">{posts[0].data.description}</p>
+						<span class="read-more">Read more &rarr;</span>
+					</a>
+				</section>
+			)}
+			{posts.length > 1 && (
+				<section>
+					<ul>
+						{posts.slice(1).map((post) => (
 							<li>
 								<a href={`/blog/${post.id}/`}>
 									{post.data.heroImage && (
@@ -104,10 +147,10 @@ const posts = (await getCollection('blog')).sort(
 									</p>
 								</a>
 							</li>
-						))
-					}
-				</ul>
-			</section>
+						))}
+					</ul>
+				</section>
+			)}
 		</main>
 		<Footer />
 	</body>

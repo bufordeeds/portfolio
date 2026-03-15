@@ -1,8 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const latestPost = posts[0];
 
 const projects = [
 	{
@@ -58,8 +65,15 @@ const projects = [
 
 			<section class="recent-posts">
 				<h2>Recent Writing</h2>
-				<p>Thoughts on development, music, and self-hosting.</p>
-				<p class="more-link"><a href="/blog">Read the blog &rarr;</a></p>
+				{latestPost && (
+					<a class="post-teaser" href={`/blog/${latestPost.id}/`}>
+						<h3>{latestPost.data.title}</h3>
+						<p class="post-date"><FormattedDate date={latestPost.data.pubDate} /></p>
+						<p class="post-description">{latestPost.data.description}</p>
+						<span class="read-more">Read more &rarr;</span>
+					</a>
+				)}
+				<p class="more-link"><a href="/blog">View all posts &rarr;</a></p>
 			</section>
 		</main>
 		<Footer />
@@ -128,5 +142,38 @@ const projects = [
 	}
 	.recent-posts {
 		margin-bottom: 3rem;
+	}
+	.post-teaser {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1.5rem;
+		transition: box-shadow 0.2s ease;
+	}
+	.post-teaser:hover {
+		box-shadow: var(--box-shadow);
+	}
+	.post-teaser h3 {
+		margin-bottom: 0.25rem;
+		color: rgb(var(--black));
+	}
+	.post-date {
+		color: rgb(var(--gray));
+		font-size: 0.85em;
+		margin: 0 0 0.75rem;
+	}
+	.post-description {
+		color: rgb(var(--gray-dark));
+		font-size: 0.95em;
+		margin: 0;
+		line-height: 1.5;
+	}
+	.read-more {
+		display: inline-block;
+		margin-top: 0.75rem;
+		color: rgb(var(--accent));
+		font-weight: bold;
 	}
 </style>
